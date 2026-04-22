@@ -1,0 +1,72 @@
+@extends('auth.app')
+
+@section('content')
+<!-- CONTAINER OPEN -->
+<div class="col col-login mx-auto text-center">
+    <a href="index.html" class="text-center">
+        <img style="border-radius: 20px" src="{{ asset($settings->logo ?? 'default/logo.png') }}" class="header-brand-img" alt="">
+    </a>
+</div>
+<div class="container-login100">
+    <div class="wrap-login100 p-0">
+        <div class="card-body">
+            <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="login100-form-title">
+                    <h2>Sign In</h2>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-bs-validate="Valid email is required: ex@abc.xyz">
+                    <input class="input100" type="text" name="email" placeholder="Email">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="zmdi zmdi-email" aria-hidden="true"></i>
+                    </span>
+                </div>
+                @error('email')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+
+                <div class="wrap-input100 validate-input" data-bs-validate="Password is required" style="position: relative;">
+                    <input class="input100" type="password" name="password" id="password" placeholder="Password">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="zmdi zmdi-lock" aria-hidden="true"></i>
+                    </span>
+                    <span class="password-toggle" onclick="togglePasswordVisibility()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 1.5rem; cursor: pointer;">
+                        <i id="password-icon" class="zmdi zmdi-eye" aria-hidden="true"></i>
+                    </span>
+                </div>
+                @error('password')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+
+                <div class="container-login100-form-btn">
+                    <button type="submit" class="login100-form-btn btn-primary">
+                        Login
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function togglePasswordVisibility() {
+        const passwordField = document.getElementById('password');
+        const passwordIcon = document.getElementById('password-icon');
+
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            passwordIcon.classList.remove('zmdi-eye');
+            passwordIcon.classList.add('zmdi-eye-off');
+        } else {
+            passwordField.type = 'password';
+            passwordIcon.classList.remove('zmdi-eye-off');
+            passwordIcon.classList.add('zmdi-eye');
+        }
+    }
+</script>
+<!-- CONTAINER CLOSED -->
+@endsection

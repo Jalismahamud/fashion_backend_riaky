@@ -1,0 +1,18 @@
+This is a Mobile appilcation backend useing laravel framework
+
+Here are some credencials about the hosting and ftp:
+
+
+FTP Username: app@riaky.softvencefsd.xyz
+FTP server: ftp.softvencefsd.xyz
+FTP password : 3ufK=dAOCax3dlei
+FTP & explicit FTPS port:  21
+
+
+
+Softvence Database Password: 3ufK=dAOCax3dlei
+Sotfvence Server username : softvence_riaky
+Softvence server hostname : softvence_riaky
+
+
+
